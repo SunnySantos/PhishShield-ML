@@ -60,29 +60,6 @@ def predict():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
-
-file_path = "phishtank_dataset.csv"
-
-@app.route('/add-rows', methods=['POST'])
-def add_rows():
-    data = request.get_json()
-
-    # Check if the data is an array
-    if not isinstance(data, list):
-        return jsonify({"error": "Data should be an array of entries"}), 400
-
-    # Check if each entry has 'url' and 'type'
-    for entry in data:
-        if 'url' not in entry or 'type' not in entry:
-            return jsonify({"error": "Each entry must contain 'url' and 'type' fields"}), 400
-
-    with open(file_path, mode='a', newline='') as file:
-        writer = csv.writer(file)
-        for entry in data:
-            writer.writerow([entry['url'], entry['type']])
-
-    return jsonify({"message": f"{len(data)} rows added successfully"}), 201
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
