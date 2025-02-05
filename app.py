@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all domains
 
 # Load the TensorFlow model
-model = tf.keras.models.load_model('./phishing_model2.keras')
+model = tf.keras.models.load_model('./phishing_model3')
 
 @app.route('/predict', methods=['POST'])
 def predict():
