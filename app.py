@@ -18,12 +18,12 @@ def predict():
         data = request.json
         url = sanitize_url(data['url'])
 
-        if is_reported(url):
-            print('reporteeed', url)
-            return jsonify({
-                'prediction': 0.0,
-                'status': 'Reported'
-            })
+        # if is_reported(url):
+        #     print('reporteeed', url)
+        #     return jsonify({
+        #         'prediction': 0.0,
+        #         'status': 'Reported'
+        #     })
 
         # Check if the URL is in the whitelist
         if is_whitelisted(url):
